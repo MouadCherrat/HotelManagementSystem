@@ -27,7 +27,14 @@ public class LoginServlet extends HttpServlet {
 
        User user = login.loginCheck(email,password);
         if (user == null) {
-            resp.sendRedirect(req.getContextPath() + "/ErrorPage.jsp");
+            String errorMessage = "Identifiants incorrects. Veuillez réessayer.";
+            resp.setContentType("text/html");
+            PrintWriter out = resp.getWriter();
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('" + errorMessage + "');");
+            out.println("location='Login.jsp';");
+            out.println("</script>");
+
         }
         else {
             HttpSession session = req.getSession() ;

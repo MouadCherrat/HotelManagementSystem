@@ -15,13 +15,33 @@ import java.util.Date;
         @ManyToOne
         @JoinColumn(name = "user_id")
         private User user;
-        @Column(name = "room_number")
-        private int roomNumber;
+        @Column(name = "nombre_lits")
+        private int nombre_beds;
         @Column(name = "check_in_date")
         private Date checkInDate;
         @Column(name = "check_out_date")
         private Date checkOutDate;
+        private double amount;
+        private int room_number;
 
+        public int getRoom_number() {
+            return room_number;
+        }
+
+        public void setRoom_number(int room_number) {
+            this.room_number = room_number;
+        }
+
+
+
+
+        public double getAmount() {
+            return amount;
+        }
+
+        public void setAmount(double amount) {
+            this.amount = amount;
+        }
 
         public Long getId() {
             return id;
@@ -39,12 +59,12 @@ import java.util.Date;
             this.user = user;
         }
 
-        public int getRoomNumber() {
-            return roomNumber;
+        public int getNombre_beds() {
+            return nombre_beds;
         }
 
-        public void setRoomNumber(int roomNumber) {
-            this.roomNumber = roomNumber;
+        public void setNombre_beds(int nombre_beds) {
+            this.nombre_beds = nombre_beds;
         }
 
         public Date getCheckInDate() {

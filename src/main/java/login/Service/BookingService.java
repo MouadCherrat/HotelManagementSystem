@@ -6,6 +6,8 @@ import jakarta.persistence.Persistence;
 import login.Model.Booking;
 
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class BookingService {
@@ -16,7 +18,8 @@ public class BookingService {
         this.entityManagerFactory = Persistence.createEntityManagerFactory("HMS");
         this.entityManager = entityManagerFactory.createEntityManager();
     }
-    public Optional<Booking> save (Booking booking) {
+
+    public Optional<Booking> save(Booking booking) {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(booking);
@@ -27,4 +30,21 @@ public class BookingService {
         }
         return Optional.empty();
     }
+
+    public double calculateAmount(Booking booking) {
+        double pricePerNight = 100.0;
+        long numberOfNights = ChronoUnit.DAYS.between(booking.getCheckInDate().toInstant(), booking.getCheckOutDate().toInstant());
+        double  totalAmount = pricePerNight *numberOfNights * booking.getNombre_beds();
+        booking.setAmount(totalAmount);
+        return totalAmount;
+    }
+    public void checkReservation(Booking booking){
+
+
+    }
+
 }
+
+
+
+
