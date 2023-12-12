@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5536d770-01fc-4e3c-9a90-4a470931de3e" name="Changes" comment="Creating login,registration and booking pages without constraints">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/BookingServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/BookingServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/login/Model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/login/Service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Index.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="5536d770-01fc-4e3c-9a90-4a470931de3e" name="Changes" comment="Creating login,registration and booking pages without constraints" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +164,7 @@
       <workItem from="1701885493872" duration="33982000" />
       <workItem from="1702110369690" duration="1490000" />
       <workItem from="1702223871792" duration="16520000" />
-      <workItem from="1702307983640" duration="8736000" />
+      <workItem from="1702307983640" duration="9533000" />
     </task>
     <task id="LOCAL-00001" summary="Creating login,registration and booking pages without constraints">
       <option name="closed" value="true" />
@@ -182,7 +174,31 @@
       <option name="project" value="LOCAL" />
       <updated>1702075840987</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Creating login,registration and booking pages without constraints">
+      <option name="closed" value="true" />
+      <created>1702332700480</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702332700480</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Creating login,registration and booking pages without constraints">
+      <option name="closed" value="true" />
+      <created>1702332718503</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702332718503</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Creating login,registration and booking pages without constraints">
+      <option name="closed" value="true" />
+      <created>1702332757389</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702332757389</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
