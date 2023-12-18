@@ -32,9 +32,6 @@ import java.util.Date;
             this.room_number = room_number;
         }
 
-
-
-
         public double getAmount() {
             return amount;
         }
@@ -82,6 +79,7 @@ import java.util.Date;
         public void setCheckOutDate(Date checkOutDate) {
             this.checkOutDate = checkOutDate;
         }
+
     }
 
 

@@ -1,6 +1,7 @@
 <%@ page import="login.Model.User" %>
 <%@ page import="login.Model.Booking" %>
 <%@ page import="login.Service.BookingService" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%--
   Created by IntelliJ IDEA.
   User: mouaad
@@ -80,6 +81,10 @@
     double totalAmount = (double) session3.getAttribute("totalAmount");
     BookingService bookingService = new BookingService();
 
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    String checkInDateFormatted = dateFormat.format(booking.getCheckInDate());
+    String checkOutDateFormatted = dateFormat.format(booking.getCheckOutDate());
+
 %>
 
 <div class="invoice-container">
@@ -97,11 +102,11 @@
         </tr>
         <tr>
             <th>Date de depart</th>
-            <td><%=booking.getCheckInDate()%></td>
+            <td><%=checkInDateFormatted%></td>
         </tr>
         <tr>
             <th>Date de sortie</th>
-            <td><%=booking.getCheckOutDate()%></td>
+            <td><%=checkOutDateFormatted%></td>
         </tr>
         <tr>
             <th>Prenom</th>

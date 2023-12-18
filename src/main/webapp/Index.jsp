@@ -124,13 +124,13 @@
         <option value="8">Chambre 8</option>
         <option value="9">Chambre 9</option>
         <option value="10">Chambre 10</option>
-       <select>
+       </select>
 
 
 
 
         <label for="nombre_beds">Nombre de Lits:</label>
-    <input type="number" id="nombre_beds" name="nombre_lits" required>
+    <input type="number" id="nombre_beds" name="nombre_lits" required min="0">
 
     <label for="checkInDate">Date d'arrivee:</label>
     <input type="date" id="checkInDate" name="checkInDate" required>
