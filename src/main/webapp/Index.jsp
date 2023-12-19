@@ -17,9 +17,7 @@
             justify-content: center;
             height: 100vh;
         }
-        /* Ajoutez ce style à votre fichier CSS existant */
 
-        /* Style du label */
         label {
             display: block;
             margin: 10px 0 5px;
@@ -47,7 +45,7 @@
             margin-top: 20px;
         }
 
-        h2 {
+        h1{
             color: #007bff;
             margin-bottom: 20px;
         }
@@ -72,6 +70,8 @@
             padding: 8px;
         }
 
+
+
         input[type="submit"] {
             background-color: #007bff;
             color: #fff;
@@ -85,17 +85,33 @@
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
+        .reservation-message {
+            background: linear-gradient(to right, #4CBF50, #3498db);
+            color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .reservation-message h3 {
+            margin: 0;
+        }
+
+
     </style>
 </head>
 <body>
 <%
     String erreurMessage = (String) request.getAttribute("erreurMessage");
+
+
     if (erreurMessage != null) {
 %>
 
 <p style="color: red;"><%= erreurMessage %></p>
 <%
-
     }
 %>
 <%
@@ -106,7 +122,8 @@
         response.sendRedirect("Login.jsp");
     }
 %>
-<h2>Welcome <%= user.getFirstName() + " " + user.getLastName()%> </h2>
+<h1>Welcome <%= user.getFirstName() + " " + user.getLastName()%> </h1>
+
 
 
 <form action="BookingServlet-servlet" method="post">
@@ -126,9 +143,6 @@
         <option value="10">Chambre 10</option>
        </select>
 
-
-
-
         <label for="nombre_beds">Nombre de Lits:</label>
     <input type="number" id="nombre_beds" name="nombre_lits" required min="0">
 
@@ -140,6 +154,9 @@
 
     <input type="submit" value="Reserver">
 </form>
+<div class="reservation-message">
+    <h3>Reservez maintenant pour seulement 100$ par nuit!</h3>
+</div>
 
 </body>
 </html>

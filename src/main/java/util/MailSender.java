@@ -1,10 +1,12 @@
 package util;
 
+import jakarta.ejb.Asynchronous;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
 import java.util.Properties;
+@Asynchronous
 
 public class MailSender {
     public static String sendEmail(String to, String body) {
@@ -29,6 +31,8 @@ public class MailSender {
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setText(body);
+            message.setSubject("Facture Reservation");
+
 
             Transport.send(message);
 

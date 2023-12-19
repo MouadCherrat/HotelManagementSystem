@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5536d770-01fc-4e3c-9a90-4a470931de3e" name="Changes" comment="Creating login,registration and booking pages without constraints">
+    <list default="true" id="5536d770-01fc-4e3c-9a90-4a470931de3e" name="Changes" comment="setting up jakarta mail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/BookingServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/BookingServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/login/Model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/PdfServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/PdfServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/MailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/MailSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Summary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Summary.jsp" afterDir="false" />
     </list>
@@ -176,7 +177,8 @@
       <workItem from="1702466254472" duration="12465000" />
       <workItem from="1702563712395" duration="4404000" />
       <workItem from="1702719520838" duration="1305000" />
-      <workItem from="1702938200626" duration="2053000" />
+      <workItem from="1702938200626" duration="3015000" />
+      <workItem from="1703013114801" duration="6692000" />
     </task>
     <task id="LOCAL-00001" summary="Creating login,registration and booking pages without constraints">
       <option name="closed" value="true" />
@@ -218,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702393930165</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="setting up jakarta mail">
+      <option name="closed" value="true" />
+      <created>1702940717308</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702940717308</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +247,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creating login,registration and booking pages without constraints" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating login,registration and booking pages without constraints" />
+    <MESSAGE value="setting up jakarta mail" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting up jakarta mail" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

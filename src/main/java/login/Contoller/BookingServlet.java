@@ -13,7 +13,7 @@ import jakarta.servlet.annotation.*;
 import login.Model.Booking;
 import login.Model.User;
 import login.Service.BookingService;
-import util.MailSender;
+
 
 @WebServlet(name = "BookingServletServlet", value = "/BookingServlet-servlet")
 public class BookingServlet extends HttpServlet {
@@ -30,7 +30,6 @@ public class BookingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Booking booking = new Booking();
         Integer nombreLits =Integer.parseInt(req.getParameter("nombre_lits")) ;
-       // Integer roomnumber=Integer.parseInt(req.getParameter("room_number")) ;
         Integer roomNumber = Integer.parseInt(req.getParameter("room_number"));
 
         String checkIn = req.getParameter("checkInDate");
@@ -57,9 +56,7 @@ public class BookingServlet extends HttpServlet {
         if (checkInDate != null && checkInDate.after(currentDate) && checkOutDate != null && checkOutDate.after(currentDate)) {
 
             booking.setNombre_beds(nombreLits);
-            System.out.println("test1");
             booking.setRoom_number(roomNumber);
-            System.out.println("test2");
             booking.setCheckInDate(checkInDate);
             booking.setCheckOutDate(checkOutDate);
             booking.setUser(user);
@@ -68,12 +65,7 @@ public class BookingServlet extends HttpServlet {
             session.setAttribute("totalAmount", totalAmount);
             bookingService.save(booking);
 
-            String emailBody = buildEmailBody(booking);
-
-            System.out.println("mail "+ user.getEmail());
-
-            MailSender.sendEmail(user.getEmail(), emailBody);
-            System.out.println("body"+emailBody);
+            req.setAttribute("reservationMessage", "Réservez dès maintenant pour 100 $ par nuit!");
 
             resp.sendRedirect(req.getContextPath() + "/Summary.jsp");
 
@@ -81,27 +73,7 @@ public class BookingServlet extends HttpServlet {
             req.setAttribute("erreurMessage", "La date de réservation est invalide.");
             req.getRequestDispatcher("Index.jsp").forward(req, resp);
         }
-
     }
-
-    private String buildEmailBody(Booking booking) {
-        StringBuilder emailBody = new StringBuilder();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String checkInDateFormatted = dateFormat.format(booking.getCheckInDate());
-        String checkOutDateFormatted = dateFormat.format(booking.getCheckOutDate());
-
-
-        emailBody.append("Booking Details:\n");
-        emailBody.append("Room Number: ").append(booking.getRoom_number()).append("\n");
-        emailBody.append("Number of Beds: ").append(booking.getNombre_beds()).append("\n");
-        emailBody.append("Check-In Date: ").append(checkInDateFormatted).append("\n");
-        emailBody.append("Check-Out Date: ").append(checkOutDateFormatted).append("\n");
-        emailBody.append("Total Amount: $").append(booking.getAmount()).append("\n");
-
-        return emailBody.toString();
-    }
-
-
     public void destroy() {
     }
 }

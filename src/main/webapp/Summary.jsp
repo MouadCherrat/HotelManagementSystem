@@ -67,6 +67,22 @@
             margin: 10px 0;
             color: #333;
         }
+        .center-form {
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -125,7 +141,12 @@
             <td> <%=bookingService.calculateAmount(booking)%> </td>
         </tr>
     </table>
+    <form action="PdfServlet-servlet" method="post" class="center-form">
+        <input type="submit" value="Valider Reservation">
+    </form>
 </div>
+
+
 
 </body>
 </html>
