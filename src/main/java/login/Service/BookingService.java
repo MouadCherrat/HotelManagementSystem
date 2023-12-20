@@ -6,8 +6,10 @@ import jakarta.persistence.Persistence;
 import login.Model.Booking;
 
 
-import java.time.LocalDate;
+
 import java.time.temporal.ChronoUnit;
+
+import java.util.Date;
 import java.util.Optional;
 
 public class BookingService {
@@ -38,12 +40,30 @@ public class BookingService {
         booking.setAmount(totalAmount);
         return totalAmount;
     }
-    public void checkReservation(Booking booking){
+
+    public boolean checkReservation(int room_num, Date checkin, Date checkout){
+
+        Long overlappingCount = entityManager.createQuery(
+                        "SELECT COUNT(b) FROM Booking b " +
+                                "WHERE b.room_number = :room_num " +
+                                "AND :checkout > b.checkInDate AND :checkin < b.checkOutDate",
+                        Long.class)
+                .setParameter("room_num", room_num)
+                .setParameter("checkin", checkin)
+                .setParameter("checkout", checkout)
+                .getSingleResult();
+
+
+        return overlappingCount == 0;
+
+        }
+
+
 
 
     }
 
-}
+
 
 
 

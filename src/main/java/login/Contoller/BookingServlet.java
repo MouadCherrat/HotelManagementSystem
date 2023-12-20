@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.*;
 import login.Model.Booking;
 import login.Model.User;
 import login.Service.BookingService;
+import util.CreatePdf;
 
 
 @WebServlet(name = "BookingServletServlet", value = "/BookingServlet-servlet")
@@ -54,20 +55,31 @@ public class BookingServlet extends HttpServlet {
         }
         Date currentDate = new Date();
         if (checkInDate != null && checkInDate.after(currentDate) && checkOutDate != null && checkOutDate.after(currentDate)) {
+          boolean isAvailable = bookingService.checkReservation(roomNumber,checkInDate,checkOutDate);
+          if (isAvailable){
+              booking.setNombre_beds(nombreLits);
+              booking.setRoom_number(roomNumber);
+              booking.setCheckInDate(checkInDate);
+              booking.setCheckOutDate(checkOutDate);
+              booking.setUser(user);
 
-            booking.setNombre_beds(nombreLits);
-            booking.setRoom_number(roomNumber);
-            booking.setCheckInDate(checkInDate);
-            booking.setCheckOutDate(checkOutDate);
-            booking.setUser(user);
+              double totalAmount =  bookingService.calculateAmount(booking);
+              session.setAttribute("totalAmount", totalAmount);
+              bookingService.save(booking);
 
-            double totalAmount =  bookingService.calculateAmount(booking);
-            session.setAttribute("totalAmount", totalAmount);
-            bookingService.save(booking);
+              CreatePdf createPdf = new CreatePdf();
+              String filePath = "/Users/mouaad/IdeaProjects/HotelManagement/pdfSample.pdf";
+              createPdf.generatePdf(filePath, roomNumber, nombreLits, checkInDate, checkOutDate, String.valueOf(totalAmount));
 
-            req.setAttribute("reservationMessage", "Réservez dès maintenant pour 100 $ par nuit!");
 
-            resp.sendRedirect(req.getContextPath() + "/Summary.jsp");
+              req.setAttribute("reservationMessage", "Réservez dès maintenant pour 100 $ par nuit!");
+
+              resp.sendRedirect(req.getContextPath() + "/Summary.jsp");
+          }
+          else {
+              req.setAttribute("erreurMessage", "La chambre n'est pas disponible pour cet intervalle de dates.");
+              req.getRequestDispatcher("Index.jsp").forward(req, resp);
+          }
 
         } else {
             req.setAttribute("erreurMessage", "La date de réservation est invalide.");
@@ -76,4 +88,5 @@ public class BookingServlet extends HttpServlet {
     }
     public void destroy() {
     }
+
 }

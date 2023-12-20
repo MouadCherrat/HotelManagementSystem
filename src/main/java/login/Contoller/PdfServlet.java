@@ -6,13 +6,14 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import login.Model.Booking;
 import login.Model.User;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import util.CreatePdf;
 import util.MailSender;
 
 @WebServlet(name = "PdfServletServlet", value = "/PdfServlet-servlet")
 public class PdfServlet extends HttpServlet {
-
     private Booking booking;
-
     public void init() {
         booking = new Booking();
     }
@@ -37,8 +38,8 @@ public class PdfServlet extends HttpServlet {
     public void destroy() {
     }
 
-    private String buildEmailBody(Booking booking) {
-        StringBuilder emailBody = new StringBuilder();
+    private String buildEmailBody(Booking booking) throws IOException {
+          StringBuilder emailBody = new StringBuilder();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String checkInDateFormatted = dateFormat.format(booking.getCheckInDate());
         String checkOutDateFormatted = dateFormat.format(booking.getCheckOutDate());
@@ -50,6 +51,12 @@ public class PdfServlet extends HttpServlet {
         emailBody.append("Check-Out Date: ").append(checkOutDateFormatted).append("\n");
         emailBody.append("Total Amount: $").append(booking.getAmount()).append("\n");
 
+
         return emailBody.toString();
+
     }
+
 }
+
+
+
