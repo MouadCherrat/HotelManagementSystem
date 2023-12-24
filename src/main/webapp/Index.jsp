@@ -1,111 +1,93 @@
 <%@ page import="login.Model.User" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-image: url('images/slide2.jpg');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0 5px;
             color: #333;
-        }
-
-
-        select {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-
-        form {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-            margin-top: 20px;
         }
 
         h1{
-            color: #007bff;
-            margin-bottom: 20px;
+            color: white;
+        }
+        h2 {
+            color: #090707;
         }
 
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        form,
+        .room-rates {
+            margin: 0px 25px;
+        }
 
         label {
             display: block;
-            margin: 10px 0 5px;
-            color: #333;
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 14px;
         }
 
-        input {
+        select,
+        input[type="date"],
+        input[type="submit"] {
             width: 100%;
-            padding: 8px;
-            margin: 5px 0 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
             box-sizing: border-box;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            color: #555;
+            font-size: 16px;
         }
-
-        input[type="date"] {
-            padding: 8px;
-        }
-
-
 
         input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
+            background-color: #ffcc00;
+            color: #333;
             cursor: pointer;
-            font-size: 16px;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
+            transition: background-color 0.3s;
         }
 
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #ffdb4d;
         }
-        .reservation-message {
-            background: linear-gradient(to right, #4CBF50, #3498db);
-            color: #fff;
-            padding: 20px;
+
+        footer {
             margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
+            color: #090707;
         }
-
-        .reservation-message h3 {
-            margin: 0;
-        }
-
-
     </style>
 </head>
+
 <body>
 <%
     String erreurMessage = (String) request.getAttribute("erreurMessage");
-
 
     if (erreurMessage != null) {
 %>
@@ -122,41 +104,53 @@
         response.sendRedirect("Login.jsp");
     }
 %>
-<h1>Welcome <%= user.getFirstName() + " " + user.getLastName()%> </h1>
+<h1>Bienvenue <%= user.getFirstName() + " " + user.getLastName()%> </h1>
+
+<div class="container">
+    <form action="BookingServlet-servlet" method="post">
+        <h2>Reservation</h2>
+        <label for="nombre_lits">Nombre de lits :</label>
+        <select id="nombre_lits" name="nombre_lits" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+        <label for="checkInDate">Date d'arrivee :</label>
+        <input type="date" id="checkInDate" name="checkInDate" required placeholder="<%=java.time.LocalDate.now()%>">
 
 
+        <label for="checkOutDate">Date de depart :</label>
+        <input type="date" id="checkOutDate" name="checkOutDate" requiredplaceholder="<%=java.time.LocalDate.now()%>">
 
-<form action="BookingServlet-servlet" method="post">
-    <h2>Reservation</h2>
-    <label for="room_number">Numero de Chambre:</label>
-    <select id="room_number" name="room_number" required>
+        <input type="submit" value="Reserver maintenant">
+    </form>
 
-        <option value="1">Chambre 1</option>
-        <option value="2">Chambre 2</option>
-        <option value="3">Chambre 3</option>
-        <option value="4">Chambre 4</option>
-        <option value="5">Chambre 5</option>
-        <option value="6">Chambre 6</option>
-        <option value="7">Chambre 7</option>
-        <option value="8">Chambre 8</option>
-        <option value="9">Chambre 9</option>
-        <option value="10">Chambre 10</option>
-       </select>
+    <div class="room-rates">
+        <h2>Tarif </h2>
+        <p>Decouvrez du luxe dans nos chambres et suites . Chaque chambre est  concue pour vous offrir un  confort et de sophistication.</p>
 
-        <label for="nombre_beds">Nombre de Lits:</label>
-    <input type="number" id="nombre_beds" name="nombre_lits" required min="0">
+        <ul>
+            <li><p>Chambre Simple : <b>150 $ </b>par nuit</p></li>
+            <li><p>Chambre Double : <b>200 $ </b>par nuit</p></li>
+            <li><p>Chambre Triple : <b>300 $ </b>par nuit</p></li>
+            <li><p>Chambre A quatre : <b>350 $ </b>par nuit</p></li>
 
-    <label for="checkInDate">Date d'arrivee:</label>
-    <input type="date" id="checkInDate" name="checkInDate" required>
+        </ul>
+        <p> Rendez votre sejour inoubliable.<b> Reservez maintenant !</b> </p>
 
-    <label for="checkOutDate">Date de depart:</label>
-    <input type="date" id="checkOutDate" name="checkOutDate" required>
 
-    <input type="submit" value="Reserver">
-</form>
-<div class="reservation-message">
-    <h3>Reservez maintenant pour seulement 100$ par nuit!</h3>
+    </div>
 </div>
 
+<footer>
+    Contactez-nous au +XXX XXXX XXXX | hmsemsi@gmail.com
+</footer>
+<script>
+    document.getElementById('checkInDate').valueAsDate = new Date();
+    document.getElementById('checkOutDate').valueAsDate = new Date();
+</script>
 </body>
+
 </html>

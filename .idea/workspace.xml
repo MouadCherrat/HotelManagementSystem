@@ -5,14 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5536d770-01fc-4e3c-9a90-4a470931de3e" name="Changes" comment="setting up jakarta mail">
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdfSample.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/pdfSample.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/BookingServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/BookingServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/PdfServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/PdfServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/login/Service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Service/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/MailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/MailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Booking.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ErrorPage.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Registration.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Summary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Summary.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +30,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Add new Servlet" />
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -85,18 +94,28 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mouaad/IdeaProjects/HotelManagement/src/main/webapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mouaad/IdeaProjects/HotelManagement/src/main/webapp/WEB-INF&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="login.Model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp" />
     </key>
   </component>
@@ -225,7 +244,9 @@
       <workItem from="1702719520838" duration="1305000" />
       <workItem from="1702938200626" duration="3015000" />
       <workItem from="1703013114801" duration="7975000" />
-      <workItem from="1703067110953" duration="10478000" />
+      <workItem from="1703067110953" duration="51181000" />
+      <workItem from="1703372958821" duration="415000" />
+      <workItem from="1703418299110" duration="20397000" />
     </task>
     <task id="LOCAL-00001" summary="Creating login,registration and booking pages without constraints">
       <option name="closed" value="true" />

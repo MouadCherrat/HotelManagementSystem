@@ -5,25 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
-public class User {
+public class Room {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private BigDecimal price;
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Booking> bookings;
+    private int nombre_lits;
 
 
+    private int room_number;
+    @Enumerated(EnumType.STRING)
+    private RoomStatus status;
 }
-

@@ -1,95 +1,140 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Connexion & Inscription</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #e6f7ff; /* Bleu clair */
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/slide1.jpg');
+            background-size: cover;
+            background-position: center;
             margin: 0;
             padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
-        form {
+        .container {
+            display: flex;
+            max-width: 800px;
+            width: 100%;
             background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container {
+            flex: 1;
+            padding: 40px;
+            box-sizing: border-box;
         }
 
         h2 {
-            color: #008ae6;
+            color: #3498db;
+            margin-bottom: 30px;
+            font-size: 26px;
         }
 
         label {
             display: block;
-            margin: 10px 0 5px;
-            color: #006bb3;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 14px;
         }
 
-        input {
+        input,
+        textarea {
             width: 100%;
-            padding: 8px;
-            margin: 5px 0 15px;
-            border: 1px solid #66a3ff;
-            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
             box-sizing: border-box;
+            transition: border-color 0.3s;
         }
 
         input[type="submit"] {
-            background-color: #005bb5; /* Bleu foncé */
+            background-color: #3498db;
             color: #fff;
             cursor: pointer;
             font-size: 16px;
-            padding: 10px;
+            padding: 14px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
         }
 
         input[type="submit"]:hover {
-            background-color: #004080; /* Bleu plus foncé */
+            background-color: #2980b9;
         }
 
         p {
-            margin-top: 10px;
+            margin-top: 20px;
             font-size: 14px;
-            color: #333;
+            color: #555;
         }
 
         a {
-            color: #005bb5;
+            color: #3498db;
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: #2075c7;
         }
     </style>
 </head>
+
 <body>
 
-<form action="loginServlet-servlet" method="post">
-    <h2>Connexion</h2>
+<div class="container">
+    <!-- Formulaire de Connexion -->
+    <div class="form-container">
+        <form action="loginServlet-servlet" method="post">
+            <h2>Connexion</h2>
 
-    <label for="email">Adresse e-mail:</label>
-    <input type="email" id="email" name="email" required>
+            <label for="email">Adresse e-mail:</label>
+            <input type="email" id="email" name="email" required>
 
-    <label for="password">Mot de passe:</label>
-    <input type="password" id="password" name="password" required>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
 
-    <input type="submit" value="Se connecter">
+            <input type="submit" value="Se connecter">
 
-    <p>Vous n'avez pas de compte? <a href="Registration.jsp">S'inscrire</a></p>
-</form>
+        </form>
+    </div>
+
+    <!-- Formulaire d'Inscription -->
+    <div class="form-container">
+        <form action="RegistrationServlet-servlet" method="post">
+            <h2>Inscription</h2>
+
+            <label for="firstName">Prenom:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Nom de famille:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="email">Adresse e-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="S'inscrire">
+
+        </form>
+    </div>
+</div>
 
 </body>
+
 </html>

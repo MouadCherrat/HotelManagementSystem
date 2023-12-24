@@ -1,8 +1,10 @@
 package login.Contoller;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -11,19 +13,33 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import login.Model.Booking;
+import login.Model.Facture;
+import login.Model.Room;
 import login.Model.User;
 import login.Service.BookingService;
+import login.Service.FactureService;
+import login.Service.RoomService;
 import util.CreatePdf;
+
+import static login.Model.RoomStatus.NON_DISPONIBLE;
 
 
 @WebServlet(name = "BookingServletServlet", value = "/BookingServlet-servlet")
 public class BookingServlet extends HttpServlet {
     private BookingService bookingService;
+    private FactureService factureservice;
+    private RoomService roomservice;
     private Booking booking;
+    private Facture facture;
+    private Room room;
 
     public void init() {
         bookingService = new BookingService();
+        factureservice = new FactureService();
+        roomservice = new RoomService();
         booking = new Booking();
+        facture = new Facture();
+        room = new Room();
 
     }
 
@@ -31,19 +47,11 @@ public class BookingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Booking booking = new Booking();
         Integer nombreLits =Integer.parseInt(req.getParameter("nombre_lits")) ;
-        Integer roomNumber = Integer.parseInt(req.getParameter("room_number"));
 
         String checkIn = req.getParameter("checkInDate");
         String checkOut = req.getParameter("checkOutDate");
         Date checkInDate = new Date();
         Date checkOutDate = new Date();
-
-        HttpSession session = req.getSession() ;
-        User user = (User)session.getAttribute("user");
-        session.setAttribute("booking", booking);
-        List<Integer> chambresDisponibles = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        session.setAttribute("chambresDisponibles", chambresDisponibles);
-
 
         try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -55,25 +63,38 @@ public class BookingServlet extends HttpServlet {
         }
         Date currentDate = new Date();
         if (checkInDate != null && checkInDate.after(currentDate) && checkOutDate != null && checkOutDate.after(currentDate)) {
-          boolean isAvailable = bookingService.checkReservation(roomNumber,checkInDate,checkOutDate);
-          if (isAvailable){
-              booking.setNombre_beds(nombreLits);
-              booking.setRoom_number(roomNumber);
+          Room room =  bookingService.checkReservation(nombreLits,checkInDate,checkOutDate);
+          if (room != null){
+
+              HttpSession session = req.getSession() ;
+              User user = (User)session.getAttribute("user");
+
+              booking.setRoom(room);
               booking.setCheckInDate(checkInDate);
               booking.setCheckOutDate(checkOutDate);
               booking.setUser(user);
-
-              double totalAmount =  bookingService.calculateAmount(booking);
-              session.setAttribute("totalAmount", totalAmount);
               bookingService.save(booking);
+
+
+              long nights = ChronoUnit.DAYS.between(booking.getCheckInDate().toInstant(), booking.getCheckOutDate().toInstant());
+
+
+              BigDecimal roomPrice = room.getPrice();
+
+
+              BigDecimal totalAmount = roomPrice.multiply(BigDecimal.valueOf(nights));
+
+              facture.setAmount(totalAmount);
+
+              facture.setBooking(booking);
+              facture.setUser(user);
+
+              session.setAttribute("facture",facture);
+              factureservice.save(facture);
 
               CreatePdf createPdf = new CreatePdf();
               String filePath = "/Users/mouaad/IdeaProjects/HotelManagement/pdfSample.pdf";
-              createPdf.generatePdf(filePath, roomNumber, nombreLits, checkInDate, checkOutDate, String.valueOf(totalAmount));
-
-
-              req.setAttribute("reservationMessage", "Réservez dès maintenant pour 100 $ par nuit!");
-
+              createPdf.generatePdf(filePath, room.getRoom_number(), room.getNombre_lits(), checkInDate, checkOutDate, String.valueOf(totalAmount));
               resp.sendRedirect(req.getContextPath() + "/Summary.jsp");
           }
           else {

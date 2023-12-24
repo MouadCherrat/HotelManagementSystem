@@ -2,6 +2,7 @@
 <%@ page import="login.Model.Booking" %>
 <%@ page import="login.Service.BookingService" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="login.Model.Facture" %>
 <%--
   Created by IntelliJ IDEA.
   User: mouaad
@@ -88,18 +89,15 @@
 <body>
 <%
     HttpSession session1 = request.getSession();
-    HttpSession session2 = request.getSession();
-    HttpSession session3 = request.getSession();
 
 
-    User user = (User) session1.getAttribute("user");
-    Booking booking = (Booking) session2.getAttribute("booking");
-    double totalAmount = (double) session3.getAttribute("totalAmount");
-    BookingService bookingService = new BookingService();
+
+    Facture facture = (Facture) session1.getAttribute("facture");
+
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    String checkInDateFormatted = dateFormat.format(booking.getCheckInDate());
-    String checkOutDateFormatted = dateFormat.format(booking.getCheckOutDate());
+    String checkInDateFormatted = dateFormat.format(facture.getBooking().getCheckInDate());
+    String checkOutDateFormatted = dateFormat.format(facture.getBooking().getCheckOutDate());
 
 %>
 
@@ -110,11 +108,11 @@
     <table>
         <tr>
             <th>Numero de chambre</th>
-            <td><%=booking.getRoom_number()%></td>
+            <td><%=facture.getBooking().getRoom().getRoom_number()%></td>
         </tr>
         <tr>
             <th>Nombre de lits</th>
-            <td><%=booking.getNombre_beds()%></td>
+            <td><%=facture.getBooking().getRoom().getNombre_lits()%></td>
         </tr>
         <tr>
             <th>Date de depart</th>
@@ -126,19 +124,19 @@
         </tr>
         <tr>
             <th>Prenom</th>
-            <td><%=user.getFirstName()%></td>
+            <td><%=facture.getUser().getFirstName()%></td>
         </tr>
         <tr>
             <th>Nom</th>
-            <td><%=user.getLastName()%></td>
+            <td><%=facture.getUser().getLastName()%></td>
         </tr>
         <tr>
             <th>Adresse email</th>
-            <td><%=user.getEmail()%></td>
+            <td><%=facture.getUser().getEmail()%></td>
         </tr>
         <tr>
             <th>Montant a payer</th>
-            <td> <%=bookingService.calculateAmount(booking)%> </td>
+            <td> <%=facture.getAmount()%>$</td>
         </tr>
     </table>
     <form action="PdfServlet-servlet" method="post" class="center-form">

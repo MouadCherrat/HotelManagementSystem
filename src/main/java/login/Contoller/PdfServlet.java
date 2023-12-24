@@ -4,18 +4,18 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import login.Model.Booking;
+import login.Model.Facture;
 import login.Model.User;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import util.CreatePdf;
+
+import login.Service.FactureService;
 import util.MailSender;
 
 @WebServlet(name = "PdfServletServlet", value = "/PdfServlet-servlet")
 public class PdfServlet extends HttpServlet {
-    private Booking booking;
+   // private FactureService factureservice;
     public void init() {
-        booking = new Booking();
+        //factureservice = new FactureService();
+
     }
 
     @Override
@@ -23,33 +23,35 @@ public class PdfServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        Booking booking = (Booking) session.getAttribute("booking");
-        String emailBody = buildEmailBody(booking);
+      Facture facture  = (Facture) session.getAttribute("facture");
+        String emailBody = buildEmailBody(facture);
 
         System.out.println("mail " + user.getEmail());
 
         MailSender.sendEmail(user.getEmail(), emailBody);
         System.out.println("body" + emailBody);
+      //  factureservice.save(facture);
 
 
         resp.sendRedirect(req.getContextPath() + "/Index.jsp");
+
     }
 
     public void destroy() {
     }
 
-    private String buildEmailBody(Booking booking) throws IOException {
+    private String buildEmailBody(Facture facture) throws IOException {
           StringBuilder emailBody = new StringBuilder();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String checkInDateFormatted = dateFormat.format(booking.getCheckInDate());
-        String checkOutDateFormatted = dateFormat.format(booking.getCheckOutDate());
+        String checkInDateFormatted = dateFormat.format(facture.getBooking().getCheckInDate());
+        String checkOutDateFormatted = dateFormat.format(facture.getBooking().getCheckOutDate());
 
         emailBody.append("Booking Details:\n");
-        emailBody.append("Room Number: ").append(booking.getRoom_number()).append("\n");
-        emailBody.append("Number of Beds: ").append(booking.getNombre_beds()).append("\n");
+        emailBody.append("Room Number: ").append(facture.getBooking().getRoom().getRoom_number()).append("\n");
+        emailBody.append("Number of Beds: ").append(facture.getBooking().getRoom().getNombre_lits()).append("\n");
         emailBody.append("Check-In Date: ").append(checkInDateFormatted).append("\n");
         emailBody.append("Check-Out Date: ").append(checkOutDateFormatted).append("\n");
-        emailBody.append("Total Amount: $").append(booking.getAmount()).append("\n");
+        emailBody.append("Total Amount: $").append(facture.getAmount()).append("\n");
 
 
         return emailBody.toString();

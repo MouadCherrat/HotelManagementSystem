@@ -24,7 +24,7 @@ public class MailSender {
                 return new PasswordAuthentication(username, password);
             }
         });
-        session.setDebug(true);
+
 
         try {
 

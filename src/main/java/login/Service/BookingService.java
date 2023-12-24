@@ -4,13 +4,17 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import login.Model.Booking;
+import login.Model.Room;
+import login.Model.RoomStatus;
 
 
 
-import java.time.temporal.ChronoUnit;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+
+import static login.Model.RoomStatus.DISPONIBLE;
 
 public class BookingService {
     EntityManagerFactory entityManagerFactory;
@@ -33,35 +37,49 @@ public class BookingService {
         return Optional.empty();
     }
 
-    public double calculateAmount(Booking booking) {
-        double pricePerNight = 100.0;
-        long numberOfNights = ChronoUnit.DAYS.between(booking.getCheckInDate().toInstant(), booking.getCheckOutDate().toInstant());
-        double  totalAmount = pricePerNight *numberOfNights * booking.getNombre_beds();
-        booking.setAmount(totalAmount);
-        return totalAmount;
+    public Room checkReservation(int nombreLit, Date checkin, Date checkout) {
+        List<Room> availableRooms = entityManager.createQuery(
+                        "SELECT r FROM Room r " +
+                                "WHERE r.nombre_lits = :nombreLit " +
+                                "AND r.status = :status",
+                        Room.class)
+                .setParameter("nombreLit", nombreLit)
+                .setParameter("status", RoomStatus.DISPONIBLE)
+                .getResultList();
+
+        System.out.println("Available rooms: " + availableRooms);
+
+        if (availableRooms == null || availableRooms.isEmpty()) {
+            return null;
+        }
+
+        for (Room room : availableRooms) {
+
+            Long overlappingCount = entityManager.createQuery(
+                            "SELECT COUNT(b) FROM Booking b " +
+                                    "WHERE b.room = :room " +
+                                    "AND :checkout > b.checkInDate AND :checkin < b.checkOutDate",
+                            Long.class)
+                    .setParameter("room", room)
+                    .setParameter("checkin", checkin)
+                    .setParameter("checkout", checkout)
+                    .getSingleResult();
+            if (overlappingCount == 0) {
+                return room;
+            }
+        }
+
+        return null;
     }
 
-    public boolean checkReservation(int room_num, Date checkin, Date checkout){
-
-        Long overlappingCount = entityManager.createQuery(
-                        "SELECT COUNT(b) FROM Booking b " +
-                                "WHERE b.room_number = :room_num " +
-                                "AND :checkout > b.checkInDate AND :checkin < b.checkOutDate",
-                        Long.class)
-                .setParameter("room_num", room_num)
-                .setParameter("checkin", checkin)
-                .setParameter("checkout", checkout)
-                .getSingleResult();
 
 
-        return overlappingCount == 0;
+
+
 
         }
 
 
-
-
-    }
 
 
 
