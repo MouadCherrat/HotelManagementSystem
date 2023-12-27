@@ -5,10 +5,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -18,36 +15,26 @@ import login.Model.Room;
 import login.Model.User;
 import login.Service.BookingService;
 import login.Service.FactureService;
-import login.Service.RoomService;
 import util.CreatePdf;
-
-import static login.Model.RoomStatus.NON_DISPONIBLE;
-
 
 @WebServlet(name = "BookingServletServlet", value = "/BookingServlet-servlet")
 public class BookingServlet extends HttpServlet {
     private BookingService bookingService;
     private FactureService factureservice;
-    private RoomService roomservice;
-    private Booking booking;
+
     private Facture facture;
     private Room room;
-
     public void init() {
         bookingService = new BookingService();
         factureservice = new FactureService();
-        roomservice = new RoomService();
-        booking = new Booking();
         facture = new Facture();
         room = new Room();
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Booking booking = new Booking();
         Integer nombreLits =Integer.parseInt(req.getParameter("nombre_lits")) ;
-
         String checkIn = req.getParameter("checkInDate");
         String checkOut = req.getParameter("checkOutDate");
         Date checkInDate = new Date();
@@ -68,24 +55,16 @@ public class BookingServlet extends HttpServlet {
 
               HttpSession session = req.getSession() ;
               User user = (User)session.getAttribute("user");
-
               booking.setRoom(room);
               booking.setCheckInDate(checkInDate);
               booking.setCheckOutDate(checkOutDate);
               booking.setUser(user);
               bookingService.save(booking);
 
-
               long nights = ChronoUnit.DAYS.between(booking.getCheckInDate().toInstant(), booking.getCheckOutDate().toInstant());
-
-
               BigDecimal roomPrice = room.getPrice();
-
-
               BigDecimal totalAmount = roomPrice.multiply(BigDecimal.valueOf(nights));
-
               facture.setAmount(totalAmount);
-
               facture.setBooking(booking);
               facture.setUser(user);
 

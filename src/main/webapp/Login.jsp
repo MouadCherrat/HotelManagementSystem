@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-image: url('images/slide1.jpg');
+            background-image: url('images/login.jpeg');
             background-size: cover;
             background-position: center;
             margin: 0;
@@ -33,20 +33,25 @@
             flex: 1;
             padding: 40px;
             box-sizing: border-box;
+
         }
 
         h2 {
-            color: #3498db;
+            color: #0b487a;
             margin-bottom: 30px;
             font-size: 26px;
+            padding-left: 28%;
         }
 
         label {
             display: block;
-            margin-bottom: 10px;
+            margin: 0 auto;
             color: #555;
             font-size: 14px;
+            text-align: center;
+            line-height: 1.5;
         }
+
 
         input,
         textarea {
@@ -60,7 +65,7 @@
         }
 
         input[type="submit"] {
-            background-color: #3498db;
+            background-color: #0b487a;
             color: #fff;
             cursor: pointer;
             font-size: 16px;
@@ -71,7 +76,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #2980b9;
+            background-color: #0b487a;
         }
 
         p {
@@ -96,8 +101,9 @@
 <body>
 
 <div class="container">
-    <!-- Formulaire de Connexion -->
+
     <div class="form-container">
+
         <form action="loginServlet-servlet" method="post">
             <h2>Connexion</h2>
 
@@ -112,7 +118,6 @@
         </form>
     </div>
 
-    <!-- Formulaire d'Inscription -->
     <div class="form-container">
         <form action="RegistrationServlet-servlet" method="post">
             <h2>Inscription</h2>
@@ -124,10 +129,10 @@
             <input type="text" id="lastName" name="lastName" required>
 
             <label for="email">Adresse e-mail:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email1" name="email" required>
 
             <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password1" name="password" required>
 
             <input type="submit" value="S'inscrire">
 

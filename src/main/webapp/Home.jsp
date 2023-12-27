@@ -12,10 +12,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion d'Hotel</title>
-  <!-- Link Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <!-- Link Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -62,8 +60,6 @@
   </style>
 </head>
 <body>
-
-<!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">HMS Hotel</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +68,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Accueil</a>
+        <a class="nav-link" href="Home.jsp">Accueil</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="Login.jsp">Se connecter</a>
@@ -84,7 +80,6 @@
   </div>
 </nav>
 
-<!-- Hero Section -->
 <div class="hero-section">
   <div class="container text-center">
     <h1 class="display-4">Bienvenue a Notre Hotel</h1>
@@ -93,17 +88,16 @@
   </div>
 </div>
 
-<!-- Features Section -->
 <div class="container features-section">
   <div class="row">
     <div class="col-lg-4">
       <h2>Chambres Luxueuses</h2>
-      <img src="images/slide1.jpg" alt="Chambre Luxueuse" class="img-fluid">
+      <img src="images/slide4.jpg" alt="Chambre Luxueuse" class="img-fluid">
       <p>Decouvrez nos chambres elegantes et confortables, concues pour repondre a toutes vos attentes.</p>
     </div>
     <div class="col-lg-4">
       <h2>Service Exceptionnel</h2>
-      <img src="images/slide4.jpg" alt="Service Exceptionnel" class="img-fluid">
+      <img src="images/slide1.jpg" alt="Service Exceptionnel" class="img-fluid">
       <p>Profitez d'un service client exceptionnel et de l'attention aux details pour rendre votre sejour memorable.</p>
     </div>
     <div class="col-lg-4">
@@ -113,13 +107,10 @@
     </div>
   </div>
 </div>
-
-<!-- Footer Section -->
 <footer class="bg-dark text-white text-center py-3">
   <p>&copy; 2023 HMS Hotel</p>
 </footer>
 
-<!-- Link Bootstrap JS and Popper.js -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

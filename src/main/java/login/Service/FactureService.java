@@ -15,7 +15,6 @@ public class FactureService {
         this.entityManagerFactory = Persistence.createEntityManagerFactory("HMS");
         this.entityManager = entityManagerFactory.createEntityManager();
     }
-
     public Optional<Facture> save(Facture facture) {
         try {
             entityManager.getTransaction().begin();
@@ -27,5 +26,4 @@ public class FactureService {
         }
         return Optional.empty();
     }
-
 }

@@ -18,10 +18,7 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private BigDecimal price;
-
     private int nombre_lits;
-
-
     private int room_number;
     @Enumerated(EnumType.STRING)
     private RoomStatus status;

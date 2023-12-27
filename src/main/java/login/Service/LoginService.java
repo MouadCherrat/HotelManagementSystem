@@ -35,7 +35,6 @@ public class LoginService {
                     .setParameter("mail",mail)
                     .setParameter("password",password)
                     .getResultList();
-
             if (user.isEmpty()){
                 System.out.println("user doenst exixst");
                 return null;

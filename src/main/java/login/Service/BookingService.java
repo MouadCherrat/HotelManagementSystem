@@ -6,16 +6,9 @@ import jakarta.persistence.Persistence;
 import login.Model.Booking;
 import login.Model.Room;
 import login.Model.RoomStatus;
-
-
-
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import static login.Model.RoomStatus.DISPONIBLE;
-
 public class BookingService {
     EntityManagerFactory entityManagerFactory;
     EntityManager entityManager;
@@ -36,7 +29,6 @@ public class BookingService {
         }
         return Optional.empty();
     }
-
     public Room checkReservation(int nombreLit, Date checkin, Date checkout) {
         List<Room> availableRooms = entityManager.createQuery(
                         "SELECT r FROM Room r " +
@@ -52,9 +44,7 @@ public class BookingService {
         if (availableRooms == null || availableRooms.isEmpty()) {
             return null;
         }
-
         for (Room room : availableRooms) {
-
             Long overlappingCount = entityManager.createQuery(
                             "SELECT COUNT(b) FROM Booking b " +
                                     "WHERE b.room = :room " +
@@ -71,11 +61,6 @@ public class BookingService {
 
         return null;
     }
-
-
-
-
-
 
         }
 

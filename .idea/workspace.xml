@@ -5,22 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5536d770-01fc-4e3c-9a90-4a470931de3e" name="Changes" comment="setting up jakarta mail">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pdfSample.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/pdfSample.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/BookingServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/BookingServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/PdfServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/PdfServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Contoller/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Contoller/RegistrationServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/login/Model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Model/RoomStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Model/RoomStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/login/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/login/Service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Service/FactureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Service/FactureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/login/Service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/login/Service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/CreatePdf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/CreatePdf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/MailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/MailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Registration.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Summary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Summary.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +32,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Add new Servlet" />
         <option value="Enum" />
         <option value="Class" />
         <option value="Jsp File" />
+        <option value="Add new Servlet" />
       </list>
     </option>
   </component>
@@ -94,7 +96,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mouaad/IdeaProjects/HotelManagement/src/main/webapp/WEB-INF&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mouaad/IdeaProjects/HotelManagement/src/main/webapp/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -112,6 +114,7 @@
       <recent name="login.Model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/images" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
       <recent name="$PROJECT_DIR$/src/main/webapp" />
     </key>
@@ -246,7 +249,12 @@
       <workItem from="1703013114801" duration="7975000" />
       <workItem from="1703067110953" duration="51181000" />
       <workItem from="1703372958821" duration="415000" />
-      <workItem from="1703418299110" duration="20397000" />
+      <workItem from="1703418299110" duration="20610000" />
+      <workItem from="1703454676536" duration="5796000" />
+      <workItem from="1703540813113" duration="3404000" />
+      <workItem from="1703621145719" duration="8174000" />
+      <workItem from="1703673077461" duration="1694000" />
+      <workItem from="1703689010986" duration="407000" />
     </task>
     <task id="LOCAL-00001" summary="Creating login,registration and booking pages without constraints">
       <option name="closed" value="true" />

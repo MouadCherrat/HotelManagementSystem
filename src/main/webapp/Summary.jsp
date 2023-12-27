@@ -16,17 +16,20 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background-image: url('images/roomHotel.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .invoice-container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.85);
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -55,7 +58,7 @@
         }
 
         h2 {
-            color: #007bff; /* Blue */
+            color: #7e7722;
         }
 
         ul {
@@ -72,7 +75,7 @@
             text-align: center;
         }
         input[type="submit"] {
-            background-color: #007bff;
+            background-color: #7e7722;
             color: #fff;
             cursor: pointer;
             font-size: 16px;
@@ -82,7 +85,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #7e7722;
         }
     </style>
 </head>
@@ -90,10 +93,7 @@
 <%
     HttpSession session1 = request.getSession();
 
-
-
     Facture facture = (Facture) session1.getAttribute("facture");
-
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     String checkInDateFormatted = dateFormat.format(facture.getBooking().getCheckInDate());
@@ -143,8 +143,6 @@
         <input type="submit" value="Valider Reservation">
     </form>
 </div>
-
-
 
 </body>
 </html>

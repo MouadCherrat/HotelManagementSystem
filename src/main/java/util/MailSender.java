@@ -7,7 +7,6 @@ import jakarta.mail.internet.MimeMessage;
 
 import java.util.Properties;
 @Asynchronous
-
 public class MailSender {
     public static String sendEmail(String to, String body) {
         final String username = "hmsemsi@gmail.com";
@@ -24,11 +23,7 @@ public class MailSender {
                 return new PasswordAuthentication(username, password);
             }
         });
-
-
         try {
-
-
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));

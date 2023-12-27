@@ -11,7 +11,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('images/slide2.jpg');
+            background-image: url('images/home.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -23,7 +23,7 @@
         }
 
         h1{
-            color: white;
+            color: #fff6c4;
         }
         h2 {
             color: #090707;
@@ -80,7 +80,7 @@
         footer {
             margin-top: 20px;
             text-align: center;
-            color: #090707;
+            color: #ffedae;
         }
     </style>
 </head>
@@ -104,7 +104,7 @@
         response.sendRedirect("Login.jsp");
     }
 %>
-<h1>Bienvenue <%= user.getFirstName() + " " + user.getLastName()%> </h1>
+<h1>Bienvenue <b> <%= user.getFirstName() + " " + user.getLastName() %> </b></h1>
 
 <div class="container">
     <form action="BookingServlet-servlet" method="post">
@@ -132,10 +132,11 @@
         <p>Decouvrez du luxe dans nos chambres et suites . Chaque chambre est  concue pour vous offrir un  confort et de sophistication.</p>
 
         <ul>
-            <li><p>Chambre Simple : <b>150 $ </b>par nuit</p></li>
-            <li><p>Chambre Double : <b>200 $ </b>par nuit</p></li>
-            <li><p>Chambre Triple : <b>300 $ </b>par nuit</p></li>
-            <li><p>Chambre A quatre : <b>350 $ </b>par nuit</p></li>
+            <li><p>  Chambre Simple : <b>150 $ </b>par nuit</p></li>
+            <li><p>  Chambre Double : <b>200 $ </b>par nuit</p></li>
+            <li><p>  Chambre Triple : <b>300 $ </b>par nuit</p></li>
+            <li><p> Chambre a Quatre : <b>350 $ </b>par nuit</p></li>
+            <i class="fa-solid fa-bed"></i>
 
         </ul>
         <p> Rendez votre sejour inoubliable.<b> Reservez maintenant !</b> </p>
@@ -145,7 +146,7 @@
 </div>
 
 <footer>
-    Contactez-nous au +XXX XXXX XXXX | hmsemsi@gmail.com
+    Contactez-nous au +212 64513 1252 | hmsemsi@gmail.com
 </footer>
 <script>
     document.getElementById('checkInDate').valueAsDate = new Date();
